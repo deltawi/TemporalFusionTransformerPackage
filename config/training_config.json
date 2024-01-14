@@ -1,0 +1,22 @@
+{
+    "data_loader":{
+      "batch_size": 512,
+      "num_workers": 24
+    },
+    "trainer": {
+      "max_epochs": 100,
+      "accelerator": "auto",
+      "devices": [1, 2, 3],
+      "gradient_clip_val": 0.1
+    },
+    "tft": {
+      "learning_rate": 0.005,
+      "hidden_size": 16,
+      "attention_head_size": 2,
+      "dropout": 0.2,
+      "hidden_continuous_size": 8,
+      "optimizer": "Ranger",
+      "reduce_on_plateau_patience": 4
+    }
+  }
+  
