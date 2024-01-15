@@ -33,7 +33,7 @@ saved_state_dict = torch.load(best_model_path, map_location=device)
 tft.load_state_dict(saved_state_dict['state_dict'])
 
 ## Create dataloader
-data_set = pd.read_csv("test.csv")
+data_test = pd.read_csv("test.csv")
 test_dataset = TimeSeriesDataSet.from_dataset(training_dataset, data_test, stop_randomization=True)
 max_batch_size = 32
 batch_size=largest_even_divisor(len(test_dataset), max_batch_size) # this is a workaround when the number of samples is not dividable by batch_size
@@ -45,5 +45,5 @@ predictions = tft.predict(test_dataloader, mode="prediction",
                           trainer_kwargs=dict(accelerator=str(device), 
                                               enable_progress_bar=True))
 
-
+# TODO: how to save predictions safely into data_test dataframe.
     
